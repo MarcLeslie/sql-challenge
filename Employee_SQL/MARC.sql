@@ -136,3 +136,13 @@ INNER JOIN departments
 	ON departments.dept_no = dept_emp.dept_no
 WHERE departments.dept_name = 'Sales' or departments.dept_name = 'Development';
 
+--QUERY 8
+--In descending order, list frequency count of employee last names
+SELECT employees.last_name, COUNT(*)
+FROM employees
+GROUP BY employees.last_name
+ORDER BY COUNT DESC;
+
+
+
+

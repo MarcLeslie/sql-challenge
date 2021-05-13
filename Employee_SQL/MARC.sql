@@ -83,12 +83,7 @@ SELECT employees.first_name, employees.last_name, employees.hire_date
 FROM employees 
 WHERE employees.hire_date >='1986-01-01' and employees.hire_date <= '1986-12-31'; 
 
--- List managers for each department with: 
---dept_no (dept_manager), 
---dept name (departments), 
---manager’s emp_no (dept_manager), 
---last name, first name (employees)
-
+-- List managers for each department with: dept_no (dept_manager), dept name (departments), manager’s emp_no (dept_manager), last name, first name (employees)
 --dept_no is in both dept_manager and departments
 
 SELECT dept_manager.dept_no, dept_manager.emp_no, departments.dept_name, employees.last_name, employees.first_name 
@@ -97,6 +92,19 @@ INNER JOIN employees
 	ON dept_manager.emp_no = employees.emp_no
 INNER JOIN departments
 	ON dept_manager.dept_no = departments.dept_no;
+
+--List the department of each employee with the following information: employee number (employees and dept_emp), last name  (employees), 
+--first name (employees), and dept name (departments).
+-- "departments" has dept_no, which is also in "dept_emp"; "dept_emp" had emp_no which is also in "employees"
+
+SELECT dept_emp.emp_no, employees.last_name, employees.first_name,  departments.dept_name
+FROM employees
+INNER JOIN dept_emp
+	ON dept_emp.emp_no = employees.emp_no
+INNER JOIN departments
+	ON departments.dept_no = dept_emp.dept_no;
+	
+	
 
 
 
